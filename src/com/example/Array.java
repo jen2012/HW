@@ -1,14 +1,12 @@
 package com.example;
 
-import java.util.Scanner;
-
 public class Array {
     public static void main(String[] args) {
-        int[] FirstArr = {8, 7, 6, 5, 4, 3, 2, 1};
-        int[] ReverseArr = new int[FirstArr.length];
+        int[] firstarr = {8, 7, 6, 5, 4, 3, 2, 1};
+        int[] reverseArr = new int[firstarr.length];
 
-        ReverseArray(FirstArr, ReverseArr);
-        for (int i : ReverseArr) {
+        ReverseArray(firstarr, reverseArr);
+        for (int i : reverseArr) {
             System.out.print(i + " ");
         }
     }
