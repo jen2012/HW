@@ -12,6 +12,8 @@ public class Zoo {
 
     public static void main(String[] args) throws HowManyEatException, AgeException, FindWordException, AviaryNotExistException {
 
+        System.out.println("Добавляем животных в 1 вольер\n");
+
         Aviary aviary = new Aviary();
         aviary.add("Кот");
         aviary.add("Собака");
@@ -32,7 +34,7 @@ public class Zoo {
             System.out.println(aviary.get(i));
         }
 
-        System.out.println();
+        System.out.println("\nДобавляем животных в разные вольеры\n");
 
         Map<String, AviaryCollect> anymalsInAviarys = new HashMap<>();
         try {
@@ -43,13 +45,6 @@ public class Zoo {
             anymalsInAviarys.put("Черепаха", new AviaryCollect("вольер 4"));
         } catch (AviaryNotExistException e) {
             System.out.println(e.getMessage());
-        }
-
-        System.out.println();
-
-        // не получается вывести значения, вместо "Кот - вольер 1" печатается "Кот - com.zoo.animal.AviaryCollect@6193b845"
-        for (Map.Entry<String, AviaryCollect> entry : anymalsInAviarys.entrySet()) {
-            System.out.println(entry.getKey() + " - " + entry.getValue());
         }
 
         System.out.println();
@@ -124,7 +119,7 @@ public class Zoo {
         hamster1.name("Афоня");
         hamster1.say("пищит");
         try {
-            hamster1.age(-3);
+            hamster1.age(3);
         } catch (
                 AgeException e) {
             System.out.println(e.getMessage());
