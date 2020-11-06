@@ -1,12 +1,16 @@
 package com.zoo.animal;
 
 import com.zoo.exception.AgeException;
+import com.zoo.exception.AviaryNotExistException;
 import com.zoo.exception.FindWordException;
 import com.zoo.exception.HowManyEatException;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Zoo {
 
-    public static void main(String[] args) throws HowManyEatException, AgeException, FindWordException {
+    public static void main(String[] args) throws HowManyEatException, AgeException, FindWordException, AviaryNotExistException {
 
         Aviary aviary = new Aviary();
         aviary.add("Кот");
@@ -26,6 +30,26 @@ public class Zoo {
 
         for (int i = 0; i < aviary.getLengthArr(); i++) {
             System.out.println(aviary.get(i));
+        }
+
+        System.out.println();
+
+        Map<String, AviaryCollect> anymalsInAviarys = new HashMap<>();
+        try {
+            anymalsInAviarys.put("Кот", new AviaryCollect("вольер 1"));
+            anymalsInAviarys.put("Собака", new AviaryCollect("вольер 2"));
+            anymalsInAviarys.put("Канарейка", new AviaryCollect("вольер 3"));
+            anymalsInAviarys.put("Хомяк", new AviaryCollect("вольер 1"));
+            anymalsInAviarys.put("Черепаха", new AviaryCollect("вольер 4"));
+        } catch (AviaryNotExistException e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println();
+
+        // не получается вывести значения, вместо "Кот - вольер 1" печатается "Кот - com.zoo.animal.AviaryCollect@6193b845"
+        for (Map.Entry<String, AviaryCollect> entry : anymalsInAviarys.entrySet()) {
+            System.out.println(entry.getKey() + " - " + entry.getValue());
         }
 
         System.out.println();

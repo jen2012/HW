@@ -19,7 +19,7 @@ public class Aviary {
     public void findWord(String word) throws FindWordException {   //поиск в вольере
         for (int i = 0; i < lengthArr; i++) {
             if (aviary[i].equals(word)) {
-                throw new FindWordException("Такой элемент уже есть");
+                throw new FindWordException("Элемент \"" + aviary[i] + "\" уже есть");
             }
         }
     }
