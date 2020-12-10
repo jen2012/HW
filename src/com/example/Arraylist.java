@@ -13,10 +13,10 @@ public class Arraylist {
         for (int i = 0; i < str.length(); i++) {
             chrs.add(str.charAt(i));             // преобразуем строку в список chrs
         }
-        RemoveDuplicates(chrs);
+        removeDuplicates(chrs);
     }
 
-    public static void RemoveDuplicates(ArrayList<Character> chrs) {    //ищем и удляем дубликаты символов
+    public static void removeDuplicates(ArrayList<Character> chrs) {    //ищем и удляем дубликаты символов
         for (int i = 0; i < chrs.size(); i++) {
             for (int j = i + 1; j < chrs.size(); j++) {
                 if (chrs.get(i) == chrs.get(j)) {

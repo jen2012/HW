@@ -1,12 +1,18 @@
 package com.zoo.animal;
 
 import com.zoo.exception.AgeException;
+import com.zoo.exception.AviaryNotExistException;
 import com.zoo.exception.FindWordException;
 import com.zoo.exception.HowManyEatException;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Zoo {
 
-    public static void main(String[] args) throws HowManyEatException, AgeException, FindWordException {
+    public static void main(String[] args) throws HowManyEatException, AgeException, FindWordException, AviaryNotExistException {
+
+        System.out.println("Добавляем животных в 1 вольер\n");
 
         Aviary aviary = new Aviary();
         aviary.add("Кот");
@@ -26,6 +32,19 @@ public class Zoo {
 
         for (int i = 0; i < aviary.getLengthArr(); i++) {
             System.out.println(aviary.get(i));
+        }
+
+        System.out.println("\nДобавляем животных в разные вольеры\n");
+
+        Map<String, AviaryCollect> anymalsInAviarys = new HashMap<>();
+        try {
+            anymalsInAviarys.put("Кот", new AviaryCollect("вольер 1"));
+            anymalsInAviarys.put("Собака", new AviaryCollect("вольер 2"));
+            anymalsInAviarys.put("Канарейка", new AviaryCollect("вольер 3"));
+            anymalsInAviarys.put("Хомяк", new AviaryCollect("вольер 1"));
+            anymalsInAviarys.put("Черепаха", new AviaryCollect("вольер 4"));
+        } catch (AviaryNotExistException e) {
+            System.out.println(e.getMessage());
         }
 
         System.out.println();
@@ -100,7 +119,7 @@ public class Zoo {
         hamster1.name("Афоня");
         hamster1.say("пищит");
         try {
-            hamster1.age(-3);
+            hamster1.age(3);
         } catch (
                 AgeException e) {
             System.out.println(e.getMessage());
